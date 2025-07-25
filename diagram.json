@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": -143.4, "left": 47.4, "attrs": {} },
+    { "type": "wokwi-gas-sensor", "id": "gas1", "top": 127.5, "left": 64.6, "attrs": {} },
+    {
+      "type": "wokwi-ntc-temperature-sensor",
+      "id": "ntc1",
+      "top": 204.2,
+      "left": 162.6,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 121.6,
+      "left": 351.2,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -266.4,
+      "left": 357,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -253.2,
+      "left": 205.4,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir2",
+      "top": -130.4,
+      "left": 347.82,
+      "attrs": {}
+    },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -20.5, "left": -38.6, "attrs": {} }
+  ],
+  "connections": [
+    [ "uno:A0", "ntc1:OUT", "green", [ "v38.3", "h23", "v57.6" ] ],
+    [ "uno:5V", "ntc1:VCC", "red", [ "v38.3", "h42.2", "v9.6", "h19.2", "v28.8" ] ],
+    [ "uno:GND.2", "ntc1:GND", "black", [ "v28.7", "h23.1", "v28.8", "h9.6" ] ],
+    [ "gas1:VCC", "uno:5V", "red", [ "h0" ] ],
+    [ "gas1:GND", "uno:GND.3", "black", [ "h0" ] ],
+    [ "gas1:AOUT", "uno:A1", "green", [ "h0" ] ],
+    [ "pir2:VCC", "uno:5V", "red", [ "v134.4", "h-9.6" ] ],
+    [ "pir2:OUT", "uno:3", "green", [ "v19.2", "h-67.34", "v-144", "h-48" ] ],
+    [ "pir2:GND", "uno:GND.1", "black", [ "v28.8", "h-67.46", "v-144", "h-172.8" ] ],
+    [ "lcd1:GND", "uno:GND.3", "black", [ "h-28.8", "v-86.4", "h-86.4" ] ],
+    [ "lcd1:VCC", "uno:5V", "red", [ "h-48", "v-86.3", "h-28.8" ] ],
+    [ "lcd1:SDA", "uno:A4", "green", [ "h0" ] ],
+    [ "lcd1:SCL", "uno:A5", "green", [ "h0" ] ],
+    [ "uno:6", "bz1:2", "green", [ "v-38.4", "h147.7" ] ],
+    [ "bz1:1", "uno:GND.1", "green", [ "v0", "h-220.8" ] ],
+    [ "led1:A", "uno:7", "green", [ "v0" ] ],
+    [ "led1:C", "uno:GND.1", "green", [ "v19.2", "h-57.2" ] ],
+    [ "pot1:VCC", "uno:5V", "red", [ "v28.8", "h181.6" ] ],
+    [ "pot1:SIG", "uno:A1", "green", [ "v48", "h38" ] ],
+    [ "pot1:GND", "uno:GND.2", "black", [ "v38.4", "h192" ] ]
+  ],
+  "dependencies": {}
+}
